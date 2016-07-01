@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.mandsdigital.pongpager.PongPagerIndicator;
 
 
 public class SampleActivity extends AppCompatActivity {
@@ -22,6 +23,9 @@ public class SampleActivity extends AppCompatActivity {
         int[] logos = {R.drawable.nougat_logo, R.drawable.marshmallow_logo, R.drawable.lollipop_logo, R.drawable.kitkat_logo};
         SampleAdapter adapter = new SampleAdapter(logos);
         viewPager.setAdapter(adapter);
+
+        PongPagerIndicator indicator = (PongPagerIndicator) findViewById(R.id.indicator);
+        indicator.initWithViewPager(viewPager);
     }
 
     class SampleAdapter extends PagerAdapter {

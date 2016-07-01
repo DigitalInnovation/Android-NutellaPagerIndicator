@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PongPagerIndicator">
+        <attr name="barHeight" format="dimension"/>
+        <attr name="barWidth" format="dimension"/>
+        <attr name="spaceWidth" format="dimension"/>
+
+        <attr name="emptyBarColor" format="color"/>
+        <attr name="activeIndicatorColor" format="color"/>
+    </declare-styleable>
+    
+</resources>

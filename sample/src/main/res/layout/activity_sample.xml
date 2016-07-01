@@ -19,6 +19,14 @@
         android:id="@+id/indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"/>
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp"
+
+        app:barHeight="6dp"
+        app:barWidth="40dp"
+        app:spaceWidth="8dp"
+        app:emptyBarColor="@color/empty_indicator"
+        app:activeIndicatorColor="@color/active_indicator"
+        />
 
 </FrameLayout>
