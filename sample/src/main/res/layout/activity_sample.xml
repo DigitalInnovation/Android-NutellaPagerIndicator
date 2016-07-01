@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="@+id/activity_sample"/>
 
     <com.mandsdigital.pongpager.PongPagerIndicator
-        android:id="@+id/indicator"
+        android:id="@+id/configured_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
@@ -25,8 +25,15 @@
         app:barHeight="6dp"
         app:barWidth="40dp"
         app:spaceWidth="8dp"
-        app:emptyBarColor="@color/empty_indicator"
-        app:activeIndicatorColor="@color/active_indicator"
+        app:emptyBarColor="@android:color/holo_blue_dark"
+        app:activeIndicatorColor="@android:color/holo_green_dark"
         />
+
+    <com.mandsdigital.pongpager.PongPagerIndicator
+        android:id="@+id/default_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="64dp"/>
 
 </FrameLayout>

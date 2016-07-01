@@ -1,5 +1,6 @@
 package com.mandsdigital.pongpager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -7,14 +8,13 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import static android.R.interpolator.cycle;
-
 
 public class PongPagerIndicator extends FrameLayout {
 
@@ -34,7 +34,9 @@ public class PongPagerIndicator extends FrameLayout {
     private View activeIndicator;
     private ViewPager viewPager;
     private ViewPager.OnPageChangeListener pageChangeListener;
+    private Paint emptyPaint;
 
+    @SuppressLint("Deprecation")
     public PongPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -46,15 +48,20 @@ public class PongPagerIndicator extends FrameLayout {
 
         int defaultEmptyColor;
         int defaultActiveColor;
+        TypedValue themeDefault = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorAccent, themeDefault, true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             defaultEmptyColor = defaultRes.getColor(R.color.empty_indicator, context.getTheme());
-            defaultActiveColor = defaultRes.getColor(R.color.active_indicator, context.getTheme());
         } else {
             defaultEmptyColor = defaultRes.getColor(R.color.empty_indicator);
-            defaultActiveColor = defaultRes.getColor(R.color.active_indicator);
         }
+        defaultActiveColor = themeDefault.data;
+
         emptyBarColor = chosenParams.getColor(R.styleable.PongPagerIndicator_emptyBarColor, defaultEmptyColor);
         activeIndicatorColor = chosenParams.getColor(R.styleable.PongPagerIndicator_activeIndicatorColor, defaultActiveColor);
+        emptyPaint = new Paint();
+        emptyPaint.setColor(emptyBarColor);
 
         singlePathLength = barWidth + spaceWidth;
         activeIndicator = new View(context);
@@ -69,6 +76,10 @@ public class PongPagerIndicator extends FrameLayout {
         numberOfItems = viewPager.getAdapter().getCount();
         this.viewPager = viewPager;
 
+        if(numberOfItems <= 1){
+            numberOfItems = 0;
+        }
+
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
         layoutParams.width = barWidth * numberOfItems + spaceWidth * (numberOfItems -1);
         layoutParams.height = barHeight;
@@ -82,7 +93,6 @@ public class PongPagerIndicator extends FrameLayout {
                 float translation = position * singlePathLength + positionOffset * singlePathLength;
                 activeIndicator.setTranslationX(translation);
             }
-
             @Override
             public void onPageSelected(int ignored) {}
             @Override
@@ -94,12 +104,9 @@ public class PongPagerIndicator extends FrameLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        Paint emptyBarPaint = new Paint();
-        emptyBarPaint.setColor(emptyBarColor);
-
+        emptyPaint.setColor(emptyBarColor);
         Path path = createPath(numberOfItems);
-        canvas.drawPath(path, emptyBarPaint);
+        canvas.drawPath(path, emptyPaint);
         canvas.clipPath(path);
     }
 

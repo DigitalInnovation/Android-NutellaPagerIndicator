@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="empty_indicator">#37474F</color>
-    <color name="active_indicator">#7CB342</color>
-
 </resources>

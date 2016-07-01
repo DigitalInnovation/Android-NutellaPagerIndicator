@@ -1,1 +1,1 @@
-include ':sample', ':pongpager'
+include ':sample', ':PongPagerIndicator'

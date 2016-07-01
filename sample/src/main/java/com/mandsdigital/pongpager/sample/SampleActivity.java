@@ -21,11 +21,16 @@ public class SampleActivity extends AppCompatActivity {
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         int[] logos = {R.drawable.nougat_logo, R.drawable.marshmallow_logo, R.drawable.lollipop_logo, R.drawable.kitkat_logo};
+//        int[] logos = {R.drawable.nougat_logo};
+
         SampleAdapter adapter = new SampleAdapter(logos);
         viewPager.setAdapter(adapter);
 
-        PongPagerIndicator indicator = (PongPagerIndicator) findViewById(R.id.indicator);
-        indicator.initWithViewPager(viewPager);
+        PongPagerIndicator configuredIndicator = (PongPagerIndicator) findViewById(R.id.configured_indicator);
+        PongPagerIndicator defaultIndicator = (PongPagerIndicator) findViewById(R.id.default_indicator);
+        viewPager.setCurrentItem(1);
+        configuredIndicator.initWithViewPager(viewPager);
+        defaultIndicator.initWithViewPager(viewPager);
     }
 
     class SampleAdapter extends PagerAdapter {

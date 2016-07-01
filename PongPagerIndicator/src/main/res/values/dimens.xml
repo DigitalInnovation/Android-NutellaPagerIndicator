@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="default_bar_height">4dp</dimen>
+    <dimen name="default_bar_width">30dp</dimen>
+    <dimen name="default_space_width">4dp</dimen>
+</resources>
