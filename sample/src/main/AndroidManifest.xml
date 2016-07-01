@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mandsdigital.pongpager.sample">
+    package="com.mandsdigital.nutellaPagerIndicator.sample">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SampleActivity">
+        <activity android:name="com.mandsdigital.nutellaPagerIndicator.sample.SampleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

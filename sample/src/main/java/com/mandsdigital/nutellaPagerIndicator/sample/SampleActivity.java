@@ -1,4 +1,4 @@
-package com.mandsdigital.pongpager.sample;
+package com.mandsdigital.nutellaPagerIndicator.sample;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.mandsdigital.pongpager.PongPagerIndicator;
+import com.mandsdigital.nutellaPagerIndicator.NutellaPagerIndicator;
 
 
 public class SampleActivity extends AppCompatActivity {
@@ -20,16 +20,16 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        int[] logos = {R.drawable.nougat_logo, R.drawable.marshmallow_logo, R.drawable.lollipop_logo, R.drawable.kitkat_logo};
+        int[] logos = {R.drawable.nutella, R.drawable.marshmallow_logo, R.drawable.lollipop_logo, R.drawable.kitkat_logo};
 
         // Single item in viewpager - shows nothing.
-        // int[] logos = {R.drawable.nougat_logo};
+        // int[] logos = {R.drawable.nutella};
 
         SampleAdapter adapter = new SampleAdapter(logos);
         viewPager.setAdapter(adapter);
 
-        PongPagerIndicator configuredIndicator = (PongPagerIndicator) findViewById(R.id.configured_indicator);
-        PongPagerIndicator defaultIndicator = (PongPagerIndicator) findViewById(R.id.default_indicator);
+        NutellaPagerIndicator configuredIndicator = (NutellaPagerIndicator) findViewById(R.id.configured_indicator);
+        NutellaPagerIndicator defaultIndicator = (NutellaPagerIndicator) findViewById(R.id.default_indicator);
         viewPager.setCurrentItem(1);
         configuredIndicator.initWithViewPager(viewPager);
         defaultIndicator.initWithViewPager(viewPager);

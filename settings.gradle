@@ -1,1 +1,1 @@
-include ':sample', ':PongPagerIndicator'
+include ':sample', ':NutellaPagerIndicator'

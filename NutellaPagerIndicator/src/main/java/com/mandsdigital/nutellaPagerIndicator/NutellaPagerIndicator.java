@@ -1,4 +1,4 @@
-package com.mandsdigital.pongpager;
+package com.mandsdigital.nutellaPagerIndicator;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -17,10 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-public class PongPagerIndicator extends FrameLayout {
+public class NutellaPagerIndicator extends FrameLayout {
 
-
-    public PongPagerIndicator(Context context) {
+    public NutellaPagerIndicator(Context context) {
         this(context, null);
     }
 
@@ -38,14 +36,14 @@ public class PongPagerIndicator extends FrameLayout {
     private Paint emptyPaint;
 
     @SuppressLint("Deprecation")
-    public PongPagerIndicator(Context context, AttributeSet attrs) {
+    public NutellaPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray chosenParams = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PongPagerIndicator, 0, 0);
+        TypedArray chosenParams = context.getTheme().obtainStyledAttributes(attrs, R.styleable.NutellaPagerIndicator, 0, 0);
         Resources defaultRes = context.getResources();
-        barHeight = chosenParams.getDimensionPixelSize(R.styleable.PongPagerIndicator_barHeight, defaultRes.getDimensionPixelSize(R.dimen.default_bar_height));
-        barWidth = chosenParams.getDimensionPixelSize(R.styleable.PongPagerIndicator_barWidth, defaultRes.getDimensionPixelSize(R.dimen.default_bar_width));
-        spaceWidth = chosenParams.getDimensionPixelSize(R.styleable.PongPagerIndicator_spaceWidth, defaultRes.getDimensionPixelSize(R.dimen.default_space_width));
+        barHeight = chosenParams.getDimensionPixelSize(R.styleable.NutellaPagerIndicator_barHeight, defaultRes.getDimensionPixelSize(R.dimen.default_bar_height));
+        barWidth = chosenParams.getDimensionPixelSize(R.styleable.NutellaPagerIndicator_barWidth, defaultRes.getDimensionPixelSize(R.dimen.default_bar_width));
+        spaceWidth = chosenParams.getDimensionPixelSize(R.styleable.NutellaPagerIndicator_spaceWidth, defaultRes.getDimensionPixelSize(R.dimen.default_space_width));
 
         int defaultEmptyColor;
         int defaultActiveColor;
@@ -59,8 +57,8 @@ public class PongPagerIndicator extends FrameLayout {
         }
         defaultActiveColor = themeDefault.data;
 
-        emptyBarColor = chosenParams.getColor(R.styleable.PongPagerIndicator_emptyBarColor, defaultEmptyColor);
-        activeIndicatorColor = chosenParams.getColor(R.styleable.PongPagerIndicator_activeIndicatorColor, defaultActiveColor);
+        emptyBarColor = chosenParams.getColor(R.styleable.NutellaPagerIndicator_emptyBarColor, defaultEmptyColor);
+        activeIndicatorColor = chosenParams.getColor(R.styleable.NutellaPagerIndicator_activeIndicatorColor, defaultActiveColor);
         emptyPaint = new Paint();
         emptyPaint.setColor(emptyBarColor);
         singlePathLength = barWidth + spaceWidth;
@@ -73,6 +71,10 @@ public class PongPagerIndicator extends FrameLayout {
         setWillNotDraw(false);
     }
 
+    /**
+     * Main initialization method.
+     * @param viewPager the viewpager to work with, configured with adapter etc.
+     * */
     public void initWithViewPager(@NonNull ViewPager viewPager){
         numberOfItems = viewPager.getAdapter().getCount();
         this.viewPager = viewPager;
@@ -102,6 +104,16 @@ public class PongPagerIndicator extends FrameLayout {
         viewPager.addOnPageChangeListener(pageChangeListener);
     }
 
+    /**
+     * Removes the viewpager and stops showing the indicator.
+     * */
+    public void removeViewPager(){
+        this.viewPager = null;
+        this.pageChangeListener = null;
+        this.numberOfItems = 0;
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -109,13 +121,6 @@ public class PongPagerIndicator extends FrameLayout {
         Path path = createPath(numberOfItems);
         canvas.drawPath(path, emptyPaint);
         canvas.clipPath(path);
-    }
-
-    public void removeViewPager(){
-        this.viewPager = null;
-        this.pageChangeListener = null;
-        this.numberOfItems = 0;
-        invalidate();
     }
 
     private Path createPath(int numberOfRectangles) {

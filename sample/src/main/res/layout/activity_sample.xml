@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="@+id/activity_sample"
         app:layout_constraintRight_toRightOf="@+id/activity_sample"/>
 
-    <com.mandsdigital.pongpager.PongPagerIndicator
+    <com.mandsdigital.nutellaPagerIndicator.NutellaPagerIndicator
         android:id="@+id/configured_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:activeIndicatorColor="@android:color/holo_green_dark"
         />
 
-    <com.mandsdigital.pongpager.PongPagerIndicator
+    <com.mandsdigital.nutellaPagerIndicator.NutellaPagerIndicator
         android:id="@+id/default_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
