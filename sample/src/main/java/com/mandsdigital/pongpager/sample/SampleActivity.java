@@ -33,8 +33,6 @@ public class SampleActivity extends AppCompatActivity {
         viewPager.setCurrentItem(1);
         configuredIndicator.initWithViewPager(viewPager);
         defaultIndicator.initWithViewPager(viewPager);
-
-        defaultIndicator.removeViewPager();
     }
 
     class SampleAdapter extends PagerAdapter {
