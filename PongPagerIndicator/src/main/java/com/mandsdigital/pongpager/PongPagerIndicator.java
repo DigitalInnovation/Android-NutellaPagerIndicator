@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -62,8 +63,8 @@ public class PongPagerIndicator extends FrameLayout {
         activeIndicatorColor = chosenParams.getColor(R.styleable.PongPagerIndicator_activeIndicatorColor, defaultActiveColor);
         emptyPaint = new Paint();
         emptyPaint.setColor(emptyBarColor);
-
         singlePathLength = barWidth + spaceWidth;
+
         activeIndicator = new View(context);
         activeIndicator.setLayoutParams(new FrameLayout.LayoutParams(barWidth, barHeight));
         activeIndicator.setBackgroundColor(activeIndicatorColor);
@@ -72,7 +73,7 @@ public class PongPagerIndicator extends FrameLayout {
         setWillNotDraw(false);
     }
 
-    public void initWithViewPager(ViewPager viewPager){
+    public void initWithViewPager(@NonNull ViewPager viewPager){
         numberOfItems = viewPager.getAdapter().getCount();
         this.viewPager = viewPager;
 
@@ -108,6 +109,13 @@ public class PongPagerIndicator extends FrameLayout {
         Path path = createPath(numberOfItems);
         canvas.drawPath(path, emptyPaint);
         canvas.clipPath(path);
+    }
+
+    public void removeViewPager(){
+        this.viewPager = null;
+        this.pageChangeListener = null;
+        this.numberOfItems = 0;
+        invalidate();
     }
 
     private Path createPath(int numberOfRectangles) {

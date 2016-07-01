@@ -21,7 +21,9 @@ public class SampleActivity extends AppCompatActivity {
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         int[] logos = {R.drawable.nougat_logo, R.drawable.marshmallow_logo, R.drawable.lollipop_logo, R.drawable.kitkat_logo};
-//        int[] logos = {R.drawable.nougat_logo};
+
+        // Single item in viewpager - shows nothing.
+        // int[] logos = {R.drawable.nougat_logo};
 
         SampleAdapter adapter = new SampleAdapter(logos);
         viewPager.setAdapter(adapter);
@@ -31,6 +33,8 @@ public class SampleActivity extends AppCompatActivity {
         viewPager.setCurrentItem(1);
         configuredIndicator.initWithViewPager(viewPager);
         defaultIndicator.initWithViewPager(viewPager);
+
+        defaultIndicator.removeViewPager();
     }
 
     class SampleAdapter extends PagerAdapter {
