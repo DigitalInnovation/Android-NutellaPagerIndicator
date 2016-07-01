@@ -7,7 +7,7 @@ If the ViewPager has just a single item, the indicator is hidden.
 
 Example:
 
-![PongPagerIndicator sample](http://i.imgur.com/PXFdVqM.gifv)
+![PongPagerIndicator sample](https://raw.githubusercontent.com/DigitalInnovation/Android-PongPagerIndicator/master/ezgif-2664577401.gif)
 
 ## Usage
 
