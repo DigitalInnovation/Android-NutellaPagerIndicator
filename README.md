@@ -11,6 +11,28 @@ Example:
 
 ## Usage
 
+### Include it in your app
+
+Step 1. Add the JitPack maven repository to the list of repositories: (project-level build.gradle file)
+
+```
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+Step 2. Add the dependency
+
+```
+	dependencies {
+	        compile 'com.github.digitalinnovation:android-nutellapagerindicator:1.0.3'
+	}
+```
+
+
 ### Initialise with the ViewPager instance:
 
 ```
