@@ -15,7 +15,7 @@ Example:
 
 ```
   ViewPager viewpager = configureViewPager();
-  PongPagerIndicator indicator = (PongPagerIndicator) findViewById(R.id.indicator);
+  NutellaPagerIndicator indicator = (NutellaPagerIndicator) findViewById(R.id.indicator);
   indicator.initWithViewPager(viewPager);
 ```
 
