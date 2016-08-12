@@ -1,4 +1,4 @@
-# Android-PongPagerIndicator
+# Android-NutellaPagerIndicator
 An animated ViewPager indicator.
 
 This indicator uses image clipping for the transition effect.
@@ -7,7 +7,7 @@ If the ViewPager has just a single item, the indicator is hidden.
 
 Example:
 
-![PongPagerIndicator sample](https://raw.githubusercontent.com/DigitalInnovation/Android-PongPagerIndicator/master/ezgif-2664577401.gif)
+![PongPagerIndicator sample](https://raw.githubusercontent.com/DigitalInnovation/Android-NutellaPagerIndicator/master/ezgif-2664577401.gif)
 
 ## Usage
 
@@ -22,7 +22,7 @@ Example:
 ### Layout XML:
 
 ```
-<com.mandsdigital.pongpager.PongPagerIndicator
+<com.mandsdigital.nutellaPagerIndicator.NutellaPagerIndicator
         android:id="@+id/configured_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
